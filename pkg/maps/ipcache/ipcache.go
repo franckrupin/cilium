@@ -22,9 +22,9 @@ import (
 )
 
 const (
-	// MaxEntries is the maximum number of keys that can be present in the
-	// RemoteEndpointMap.
-	MaxEntries = 512000
+	// DefaultMaxEntries is the default maximum number of keys that can be present
+	// in the RemoteEndpointMap.
+	DefaultMaxEntries = 512000
 
 	// OldName is the canonical name for the v1 IPCache map on the filesystem.
 	OldName = "cilium_ipcache"
@@ -32,6 +32,10 @@ const (
 	// Name is the canonical name for the IPCache map on the filesystem.
 	Name = "cilium_ipcache_v2"
 )
+
+// MaxEntries is the maximum number of entries in the ipcache map
+// overridden at startup by the bpf-ipcache-map-max flag
+var MaxEntries int = DefaultMaxEntries
 
 // Key implements the bpf.MapKey interface.
 //

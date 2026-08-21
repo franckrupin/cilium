@@ -18,6 +18,7 @@ import (
 	"github.com/cilium/cilium/pkg/maps/egressmap"
 	"github.com/cilium/cilium/pkg/maps/encrypt"
 	"github.com/cilium/cilium/pkg/maps/fragmap"
+	"github.com/cilium/cilium/pkg/maps/ipcache"
 	"github.com/cilium/cilium/pkg/maps/l2respondermap"
 	"github.com/cilium/cilium/pkg/maps/l2v6respondermap"
 	"github.com/cilium/cilium/pkg/maps/lxcmap"
@@ -97,6 +98,9 @@ var Cell = cell.Module(
 
 	// Provides access to the vtep map.
 	vtep.Cell,
+
+	// Provides sizing configuration for the ipcache map.
+	ipcache.Cell,
 )
 
 type mapApiHandlerOut struct {
